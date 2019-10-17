@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xx.dao.MilkteaDao">
+
+<!-- resultType返回值类型  将里面的键值对取出赋给resultType所指定的对象对应的属性   parameterType参数类型-->
+
+	<select id="show" resultType="com.xx.bean.Milktea">
+		select * from milktea
+	</select>
+
+	<select id="showById" resultType="com.xx.bean.Milktea"
+		parameterType="int">
+		select
+		* from milktea where
+		id=#{id}
+	</select>
+	
+	<insert id="add" parameterType="com.xx.bean.Milktea">
+		insert into milktea values                        
+		(null,#{name},#{type},#{price},#{num})
+	</insert>
+
+	<update id="set" parameterType="com.xx.bean.Milktea">
+		update milktea set name =
+		#{name},type = #{type},price = #{price},num = #{num} where
+		id = #{id}
+	</update>
+
+	<delete id="remove" parameterType="int">
+		delete from milktea where
+		id=#{id}
+	</delete>
+
+</mapper>
